@@ -2551,3 +2551,7 @@ const json = {
       "FriendlyEventCountdownMessage": null
   }]
 };
+
+module.exports = {
+  json
+}
