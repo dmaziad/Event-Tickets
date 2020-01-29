@@ -8,6 +8,7 @@ const EventList = ({ events }) => (
         <th>Date</th>
         <th>Time</th>
         <th>Event</th>
+        <th> </th>
         <th>Price</th>
       </tr>
     </thead>
