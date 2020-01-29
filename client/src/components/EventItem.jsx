@@ -4,7 +4,18 @@ const EventItem = ({ event }) => {
   // I do have some reservations about assigning "Date" variable
   // that may conflict with Date keyword, however I went this route
   // for the sake of uniformity
-  const { Day, Date, Time, EventName, VenueName, MinPrice } = event;
+  const {
+    Day,
+    Date,
+    EventName,
+    IsDateTimeTBA,
+    IsSellingFast,
+    IsSoldOut,
+    MinPrice,
+    Time,
+    TotalMaxDisplayTickets,
+    VenueName
+  } = event;
 
   const adjustTime = time => {
     const hour = time.slice(0, 2);
@@ -26,16 +37,29 @@ const EventItem = ({ event }) => {
 
   const adjustedTime = adjustTime(Time);
 
+  const sellingFast = (
+    <td className="selling-fast">
+      Selling fast!
+      <br />
+      Only {TotalMaxDisplayTickets} tickets
+    </td>
+  );
+
   return (
     <tr className="event-item">
       <td className="event-date">
-        {Day} {Date}
+        {IsDateTimeTBA === false ? `${Day} ${Date}` : 'TBA'}
       </td>
-      <td className="event-time">{adjustedTime}</td>
+      <td className="event-time">
+        {event.IsDateTimeTBA === false ? adjustedTime : 'TBA'}
+      </td>
       <td className="event-name">
         {EventName} - {VenueName}
       </td>
-      <td className="event-price">{MinPrice}</td>
+      {IsSellingFast ? sellingFast : <td>{null}</td>}
+      <td className="event-price">
+        {IsSoldOut === false ? MinPrice : 'SOLD OUT'}
+      </td>
     </tr>
   );
 };
