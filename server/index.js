@@ -7,6 +7,10 @@ const data = require('../data/eventList');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+app.get('/events', (req, res) => {
+  res.send(data.json.Items);
+});
+
 app.listen(port, () => {
   console.log('Listening on port ', port);
 });
