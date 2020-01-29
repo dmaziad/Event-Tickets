@@ -54,7 +54,7 @@ const EventItem = ({ event }) => {
         {event.IsDateTimeTBA === false ? adjustedTime : 'TBA'}
       </td>
       <td className="event-name">
-        {EventName} - {VenueName}
+        {event.EventName} @ {event.VenueName} <br /> {event.VenueCity}
       </td>
       {IsSellingFast ? sellingFast : <td>{null}</td>}
       <td className="event-price">
