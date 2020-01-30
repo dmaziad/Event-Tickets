@@ -11,26 +11,33 @@ app.get('/events', (req, res) => {
   res.send(data.json.Items);
 });
 
-app.get('/events/:venue', (req, res) => {
-  const venueName = req.params.venue.replace('%20', ' ');
-  const eventsAtVenue = data.json.Items.filter(event => {
-    if (event.VenueName === venueName) {
+app.get('/events/:city', (req, res) => {
+  const cityName = req.params.city.replace('%20', ' ');
+  const eventsInCity = data.json.Items.filter(event => {
+    if (event.VenueCity === cityName) {
       return event;
     }
   });
-  res.send(eventsAtVenue);
+  res.send(eventsInCity);
 });
 
 app.get('/locations', (req, res) => {
   const locations = {};
-  const locationList = [];
-  data.json.Items.map(({ VenueName }) => {
-    if (!locations[VenueName]) {
-      locationList.push(VenueName);
-      locations[VenueName] = true;
+  data.json.Items.map(({ VenueCity, MinPrice }) => {
+    const city = VenueCity;
+    if (!locations[city]) {
+      locations[city] = MinPrice;
+    } else if (locations[city] > MinPrice) {
+      locations[city] > MinPrice;
     }
   });
-  res.send(locationList);
+  const locationList = Object.keys(locations);
+  const locationInfo = [];
+  for (let i = 0; i < locationList.length; i++) {
+    let obj = { name: locationList[i], minPrice: locations[locationList[i]] };
+    locationInfo.push(obj);
+  }
+  res.send(locationInfo);
 });
 
 app.listen(port, () => {

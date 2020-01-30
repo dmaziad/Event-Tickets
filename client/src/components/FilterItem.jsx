@@ -1,9 +1,9 @@
 import React from 'react';
 
-const FilterItem = ({ venue }) => {
+const FilterItem = ({ city }) => {
   return (
-    <option key={venue} value={venue}>
-      {venue}
+    <option value={city.name}>
+      {city.name} from {city.minPrice}
     </option>
   );
 };

@@ -3,26 +3,17 @@ import FilterItem from './FilterItem';
 import fetch from '../../lib/fetch';
 
 const Filter = ({ getLocations, filterEvents, locations }) => {
-  // let [locations, setLocations] = useState([]);
-
   useEffect(() => {
     getLocations();
   }, []);
 
-  // const getLocations = () => {
-  //   fetch.getLocations().then(({ data }) => {
-  //     data.sort();
-  //     setLocations(data);
-  //   });
-  // };
-
   return (
     <div className="filter">
-      <label className="venue-filter">
-        <select id="venue" onChange={e => filterEvents(e.target.value)}>
-          <option value="">Select Venue</option>
-          {locations.map(venue => (
-            <FilterItem key={venue} venue={venue} />
+      <label className="location-filter">
+        <select id="city" onChange={e => filterEvents(e.target.value)}>
+          <option value="">Select City</option>
+          {locations.map(city => (
+            <FilterItem key={city.name} city={city} />
           ))}
         </select>
       </label>

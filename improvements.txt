@@ -3,8 +3,10 @@ place at that venue. This could create problems for users in the event
 of similar venue names, or venue names where the location is ambiguous.
 
 The filter could be improved by showing the name of the city rather
-than the venue where the show will take place. It could also include
-more information like minimum price of tickets.
+than the venue where the show will take place. This would also allow
+users to view events in their city in the case of events at multiple
+venues. It could also include more information like minimum price of
+tickets.
 
 Other features that could be implemented in the future include
 allowing users to select multiple locations, and allow selections
