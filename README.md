@@ -24,4 +24,4 @@ To run application:
 `npm run server-dev`
 
 Then open the app at
-`http://localhost:3001/`
+`http://localhost:3000/`
