@@ -11,6 +11,18 @@ app.get('/events', (req, res) => {
   res.send(data.json.Items);
 });
 
+app.get('/locations', (req, res) => {
+  const locations = {};
+  const locationList = [];
+  data.json.Items.map(({ VenueName }) => {
+    if (!locations[VenueName]) {
+      locationList.push(VenueName);
+      locations[VenueName] = true;
+    }
+  });
+  res.send(locationList);
+});
+
 app.listen(port, () => {
   console.log('Listening on port ', port);
 });
