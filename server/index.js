@@ -11,6 +11,16 @@ app.get('/events', (req, res) => {
   res.send(data.json.Items);
 });
 
+app.get('/events/:venue', (req, res) => {
+  const venueName = req.params.venue.replace('%20', ' ');
+  const eventsAtVenue = data.json.Items.filter(event => {
+    if (event.VenueName === venueName) {
+      return event;
+    }
+  });
+  res.send(eventsAtVenue);
+});
+
 app.get('/locations', (req, res) => {
   const locations = {};
   const locationList = [];

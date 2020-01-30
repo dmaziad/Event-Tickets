@@ -9,7 +9,6 @@ const App = () => {
 
   useEffect(() => {
     getEvents();
-    // getLocations();
   }, []);
 
   const getEvents = () => {
@@ -20,14 +19,25 @@ const App = () => {
 
   const getLocations = () => {
     fetch.getLocations().then(({ data }) => {
+      data.sort();
       setLocations(data);
+    });
+  };
+
+  const filterEvents = venue => {
+    fetch.getEvents(venue).then(({ data }) => {
+      setEvents(data);
     });
   };
 
   return (
     <div>
       <h1>Event Tickets</h1>
-      <Filter getLocations={getLocations} locations={locations} />
+      <Filter
+        getLocations={getLocations}
+        locations={locations}
+        filterEvents={filterEvents}
+      />
       <EventList events={events} />
     </div>
   );

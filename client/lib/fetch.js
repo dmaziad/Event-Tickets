@@ -1,6 +1,9 @@
 const axios = require('axios');
 
-const getEvents = async () => {
+const getEvents = async venue => {
+  if (venue) {
+    return await axios.get(`/events/${venue}`);
+  }
   return await axios.get('/events');
 };
 

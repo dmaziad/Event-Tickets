@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FilterItem from './FilterItem';
 import fetch from '../../lib/fetch';
 
-const Filter = ({ getLocations, locations }) => {
+const Filter = ({ getLocations, filterEvents, locations }) => {
   // let [locations, setLocations] = useState([]);
 
   useEffect(() => {
@@ -19,10 +19,10 @@ const Filter = ({ getLocations, locations }) => {
   return (
     <div className="filter">
       <label className="venue-filter">
-        <select id="venue">
+        <select id="venue" onChange={e => filterEvents(e.target.value)}>
           <option value="">Select Venue</option>
           {locations.map(venue => (
-            <FilterItem venue={venue} />
+            <FilterItem key={venue} venue={venue} />
           ))}
         </select>
       </label>
