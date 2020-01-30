@@ -16,6 +16,13 @@ h1 {
   text-align: center;
 }
 
+input,
+select {
+  height: 4rem;
+  width: 28rem;
+  font-size: 100%;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
